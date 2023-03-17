@@ -8,19 +8,15 @@
 
 namespace Jiahetian\HyperfDouyin\Tripartite;
 
-use Jiahetian\HyperfDouyin\Kernel\ServiceProviders;
+
 use Jiahetian\HyperfDouyin\OpenDouyin\BaseClient;
 
 class Client extends BaseClient
 {
-    public function handle()
+
+    public function handle($query,$httpBody)
     {
-        \Yii::warning($this->httpClient()->requestQuery());
-        parse_str($this->httpClient()->requestQuery(), $data);
-        \Yii::warning($data);
-        $http_body = $this->httpClient()->requestContent();
-        \Yii::warning($http_body);
-        return $this->validate($data,$http_body);
+        return $this->validate($query,$httpBody);
     }
 
     /**
@@ -29,19 +25,22 @@ class Client extends BaseClient
      * 2、str1 的内容是 yyyyyy&client_key=xxxxxx×tamp=1624293280123&http_body=zzzzzz
      * 3、然后将待签名内容 str1 计算 md5 值, 得到的结果即为 sign
      * 4、抖音将用于签名生成的 httpBody 以[]byte 类型请求服务商，服务商请不要将[]byte 反序列化成 object 再序列化 string 用于签名校验。这样会导致 json 中的字段顺序与抖音不符，同时若抖音侧将 httpBody 进行改动，也会导致签名校验不通过
-     * @param $data
+     * @param $query
+     * @param $httpBody
      * @return bool
+     * User: jiahe
+     * Date: 2023/3/17
      */
-    protected function validate($data,$http_body)
+    protected function validate($query,$httpBody)
     {
-        if (!isset($data['sign'])) {
+        if (!isset($query['sign'])) {
             return false;
         }
 
-        $sign = $data['sign'];
-        unset($data['sign']);
-        ksort($data);
-        $signStr = $this->appRunConfig['app_secret'] . '&' . http_build_query($data) . '&http_body=' . $http_body;
+        $sign = $query['sign'];
+        unset($query['sign']);
+        ksort($query);
+        $signStr = $this->appRunConfig['app_secret'] . '&' . http_build_query($query) . '&http_body=' . $httpBody;
         $makeSign = md5($signStr);
 
         return $sign == $makeSign;
