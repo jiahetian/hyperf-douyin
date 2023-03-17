@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hyperf-douyin.iml" filepath="$PROJECT_DIR$/.idea/hyperf-douyin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Hyperf/hyperf-pay-main/.idea/hyperf-pay-main.iml" filepath="$PROJECT_DIR$/../../../Hyperf/hyperf-pay-main/.idea/hyperf-pay-main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Hyperf/easySwoole/wechat-2.x/.idea/wechat-2.x.iml" filepath="$PROJECT_DIR$/../../../Hyperf/easySwoole/wechat-2.x/.idea/wechat-2.x.iml" />
     </modules>
   </component>
 </project>

@@ -8,7 +8,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="wechat-2.x" />
-    <orderEntry type="module" module-name="hyperf-pay-main" />
   </component>
 </module>
