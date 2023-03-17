@@ -1,0 +1,35 @@
+{
+    "name": "jiahetian/hyperf-douyin",
+    "description": "a douyin open platform component for hyperf",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Jiahetian\\HyperfDouyin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HyperfTest\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-swoole": ">=4.6",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-simplexml": "*",
+        "ext-openssl": "*",
+        "psr/log": "^1.1",
+        "psr/http-message": "^1.0",
+        "psr/simple-cache": "^1.0",
+        "pimple/pimple": "^3.0",
+        "easyswoole/utility": "^1.1"
+    },
+    "require-dev": {},
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {}
+}
